@@ -4,8 +4,7 @@ import react from '@astrojs/react';
 // https://astro.build/config
 export default defineConfig({
   integrations: [react()],
-  output: 'static',
-  site: 'https://tu-dominio.com',
-  base: '/portfolioWeb/',
+  output: 'static',             // correcto, genera archivos estáticos
+  site: 'https://guilledcmdev.github.io', // tu dominio de GitHub Pages
+  base: '/portfolioWeb/',       // el nombre de tu repo
 });
-
