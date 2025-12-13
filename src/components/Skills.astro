@@ -1,0 +1,83 @@
+---
+import { cvData } from '../data/cv';
+---
+
+<section id="skills" class="skills">
+  <div class="container">
+    <h2>Habilidades</h2>
+    <div class="skills-grid">
+      {cvData.skills.map((skillGroup) => (
+        <div class="skill-category">
+          <h3>{skillGroup.category}</h3>
+          <div class="skill-items">
+            {skillGroup.items.map((skill) => (
+              <span class="skill-item">{skill}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .skill-category {
+    background-color: var(--color-bg-card);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-border-light);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+  }
+
+  .skill-category:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: var(--shadow-lg), 0 0 20px rgba(45, 134, 89, 0.2);
+    border-color: var(--color-border-green);
+    background-color: var(--color-bg-card-hover);
+  }
+
+  .skill-category h3 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  .skill-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+
+  .skill-item {
+    background-color: var(--color-bg-alt);
+    color: var(--color-text);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-sm);
+    font-weight: 500;
+    border: 1px solid var(--color-border-light);
+    transition: all 0.3s ease;
+  }
+
+  .skill-item:hover {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    color: white;
+    border-color: var(--color-primary);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 15px rgba(45, 134, 89, 0.4), var(--shadow);
+  }
+</style>
+

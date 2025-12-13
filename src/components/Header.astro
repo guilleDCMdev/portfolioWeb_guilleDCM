@@ -1,0 +1,99 @@
+---
+import { cvData } from '../data/cv';
+---
+
+<header class="header">
+  <nav class="nav container">
+    <div class="nav-brand">
+      <a href="/">{cvData.personal.name}</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">Sobre mí</a></li>
+      <li><a href="#experience">Experiencia</a></li>
+      <li><a href="#projects">Proyectos</a></li>
+      <li><a href="#skills">Habilidades</a></li>
+      <li><a href="#certifications">Certificaciones</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    background-color: rgba(20, 20, 20, 0.9);
+    border-bottom: 1px solid var(--color-border);
+    z-index: 100;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+  }
+
+  .header:hover {
+    box-shadow: 0 4px 30px rgba(45, 134, 89, 0.2), 0 2px 20px rgba(0, 0, 0, 0.5);
+    border-bottom-color: var(--color-border-green);
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .nav-brand a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: all 0.3s ease;
+  }
+
+  .nav-brand a:hover {
+    transform: scale(1.05);
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-md);
+  }
+
+  .nav-links a {
+    color: var(--color-text);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 0;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--color-primary);
+  }
+
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      gap: var(--spacing-sm);
+      font-size: 0.9rem;
+    }
+  }
+</style>
+

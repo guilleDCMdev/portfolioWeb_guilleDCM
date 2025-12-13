@@ -1,0 +1,140 @@
+---
+import { cvData } from '../data/cv';
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="hero-title">{cvData.personal.name}</h1>
+      <p class="hero-subtitle">{cvData.personal.title}</p>
+      <div class="hero-links">
+        <a href="#contact" class="btn">Contactar</a>
+        <a href={cvData.personal.linkedin} target="_blank" rel="noopener noreferrer" class="btn">
+          LinkedIn
+        </a>
+      </div>
+      <div class="hero-social">
+        {cvData.personal.github && (
+          <a href={cvData.personal.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            GitHub
+          </a>
+        )}
+        {cvData.personal.linkedin && (
+          <a href={cvData.personal.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            LinkedIn
+          </a>
+        )}
+        {cvData.personal.email && (
+          <a href={`mailto:${cvData.personal.email}`} aria-label="Email">
+            Email
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(45, 134, 89, 0.1) 0%, transparent 70%);
+    animation: pulse 6s ease-in-out infinite;
+    z-index: -1;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.3;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.2);
+      opacity: 0.6;
+    }
+  }
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-title {
+    margin-bottom: var(--spacing-sm);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    animation: fadeInUp 0.8s ease-out, glowText 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(45, 134, 89, 0.3));
+  }
+
+  @keyframes glowText {
+    0%, 100% {
+      filter: drop-shadow(0 0 10px rgba(45, 134, 89, 0.3));
+    }
+    50% {
+      filter: drop-shadow(0 0 20px rgba(45, 134, 89, 0.5));
+    }
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .hero-description {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.8;
+  }
+
+  .hero-links {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+  }
+
+  .hero-social {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-social a {
+    color: var(--color-text-light);
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid transparent;
+  }
+
+  .hero-social a:hover {
+    color: var(--color-primary);
+    background-color: var(--color-bg-card);
+    border-color: var(--color-border-green);
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(45, 134, 89, 0.3);
+  }
+</style>
+

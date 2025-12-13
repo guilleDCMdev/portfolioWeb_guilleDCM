@@ -1,0 +1,177 @@
+---
+import { cvData } from '../data/cv';
+---
+
+<section id="projects" class="projects">
+  <div class="container">
+    <h2>Proyectos</h2>
+    <div class="projects-list">
+      {cvData.projects.map((project) => (
+        <div class="project-card">
+          <div class="project-content">
+            <div class="project-header">
+              <h3>{project.name}</h3>
+              <div class="project-links">
+                {project.github && (
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" class="project-link">
+                    GitHub
+                  </a>
+                )}
+                {project.demo && (
+                  <a href={project.demo} target="_blank" rel="noopener noreferrer" class="project-link">
+                    Demo
+                  </a>
+                )}
+              </div>
+            </div>
+            <p class="project-description">{project.description}</p>
+            <div class="project-tech">
+              {project.technologies.map((tech) => (
+                <span class="tech-tag">{tech}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects {
+    background: transparent;
+    position: relative;
+  }
+
+  .projects h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .project-card {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+  }
+
+  .project-card:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-hover), var(--shadow-green);
+    border-color: var(--color-border-green);
+    background-color: var(--color-bg-card-hover);
+  }
+
+  .project-card:hover::before {
+    transform: scaleY(1);
+    box-shadow: 0 0 15px var(--color-primary);
+  }
+
+  .project-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    width: 100%;
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+  }
+
+  .project-content h3 {
+    margin: 0;
+    color: var(--color-text);
+    flex: 1;
+  }
+
+  .project-description {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin: var(--spacing-xs) 0;
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-xs);
+  }
+
+  .tech-tag {
+    background-color: var(--color-bg-alt);
+    color: var(--color-primary);
+    padding: 0.35rem 0.85rem;
+    border-radius: 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid var(--color-border-light);
+    transition: all 0.3s ease;
+  }
+
+  .tech-tag:hover {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+
+  .project-links {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-shrink: 0;
+  }
+
+  .project-link {
+    color: var(--color-primary);
+    font-weight: 500;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+
+  .project-link:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .project-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .project-links {
+      width: 100%;
+      justify-content: flex-start;
+    }
+  }
+</style>

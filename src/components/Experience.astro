@@ -1,0 +1,203 @@
+---
+import { cvData } from '../data/cv';
+
+// Agrupar experiencias de WUNDER
+const groupedExperience = cvData.experience.reduce((acc, exp) => {
+  const existing = acc.find(item => item.company === exp.company && item.company === 'WUNDER');
+  if (existing) {
+    existing.roles.push({
+      position: exp.position,
+      startDate: exp.startDate,
+      endDate: exp.endDate,
+      description: exp.description,
+      achievements: exp.achievements
+    });
+  } else {
+    acc.push({
+      company: exp.company,
+      location: exp.location,
+      roles: [{
+        position: exp.position,
+        startDate: exp.startDate,
+        endDate: exp.endDate,
+        description: exp.description,
+        achievements: exp.achievements
+      }]
+    });
+  }
+  return acc;
+}, []);
+---
+
+<section id="experience" class="experience">
+  <div class="container">
+    <h2>Experiencia</h2>
+    <div class="experience-list">
+      {groupedExperience.map((exp) => (
+        <div class="experience-item">
+          <div class="company-header">
+            <h3 class="company">{exp.company}</h3>
+            <span class="location">{exp.location}</span>
+          </div>
+          
+          {exp.roles.map((role, index) => (
+            <div class={`role-container ${index === 0 ? 'first-role' : ''}`}>
+              <div class="role-header">
+                <h4 class="position">{role.position}</h4>
+                <span class="date">{role.startDate} - {role.endDate}</span>
+              </div>
+              <p class="experience-description">{role.description}</p>
+              {role.achievements && role.achievements.length > 0 && (
+                <ul class="achievements">
+                  {role.achievements.map((achievement) => (
+                    <li>{achievement}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .experience h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .experience-item {
+    background-color: var(--color-bg-card);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-border-light);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .experience-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+  }
+
+  .experience-item:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: var(--shadow-hover), var(--shadow-green);
+    border-color: var(--color-border-green);
+    background-color: var(--color-bg-card-hover);
+  }
+
+  .experience-item:hover::before {
+    transform: scaleY(1);
+    box-shadow: 0 0 10px var(--color-primary);
+  }
+
+  .company-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--color-border-light);
+  }
+
+  .company {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin: 0;
+  }
+
+  .role-container {
+    padding-top: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    border-top: 1px dashed var(--color-border-light);
+  }
+
+  .role-container.first-role {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .role-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-sm);
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  .position {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  .location, .date {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+  }
+
+  .location {
+    font-weight: 500;
+  }
+
+  .experience-description {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.7;
+  }
+
+  .achievements {
+    list-style: none;
+    padding-left: var(--spacing-md);
+  }
+
+  .achievements li {
+    position: relative;
+    padding-left: var(--spacing-md);
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-light);
+  }
+
+  .achievements li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .company-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--spacing-xs);
+    }
+
+    .role-header {
+      flex-direction: column;
+    }
+  }
+</style>

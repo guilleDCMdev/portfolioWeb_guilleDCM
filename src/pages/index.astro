@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Starfield from '../components/Starfield.astro';
+import CustomCursor from '../components/CustomCursor.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Experience from '../components/Experience.astro';
+import Projects from '../components/Projects.astro';
+import Skills from '../components/Skills.astro';
+import Certifications from '../components/Certifications.astro';
+import Contact from '../components/Contact.astro';
+import { cvData } from '../data/cv';
+---
+
+<BaseLayout title="Portfolio - Guillermo de Carlos Muñoz" description="Portfolio profesional de Guillermo de Carlos Muñoz">
+  <Starfield />
+  <CustomCursor />
+  <Header />
+  <main>
+    <Hero />
+    <About />
+    <Experience />
+    <Skills />
+    <Certifications />
+    <Projects />
+    <Contact />
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; {new Date().getFullYear()} {cvData.personal.name}. Todos los derechos reservados.</p>
+      <div class="footer-links">
+        {cvData.personal.github && (
+          <a href={cvData.personal.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+        )}
+        {cvData.personal.linkedin && (
+          <a href={cvData.personal.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        )}
+        {cvData.personal.email && (
+          <a href={`mailto:${cvData.personal.email}`}>Email</a>
+        )}
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .footer {
+      text-align: center;
+      padding: var(--spacing-lg);
+      background-color: rgba(20, 20, 20, 0.8);
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-light);
+      position: relative;
+      z-index: 1;
+      backdrop-filter: blur(10px);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-sm);
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--color-text-light);
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: var(--border-radius-sm);
+    }
+
+    .footer-links a:hover {
+      color: var(--color-primary);
+      background-color: var(--color-bg-card);
+      transform: translateY(-2px);
+      box-shadow: 0 0 10px rgba(45, 134, 89, 0.3);
+    }
+  </style>
+</BaseLayout>
+

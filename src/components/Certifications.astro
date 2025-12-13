@@ -1,0 +1,165 @@
+---
+import { cvData } from '../data/cv';
+---
+
+<section id="certifications" class="certifications">
+  <div class="container">
+    <h2>Certificaciones</h2>
+    <div class="certifications-grid">
+      {cvData.certifications.map((cert) => (
+        <div class="cert-card">
+          <div class="cert-icon">🏆</div>
+          <div class="cert-content">
+            <h3>{cert.name}</h3>
+            <p class="cert-issuer">{cert.issuer}</p>
+            <p class="cert-date">Expedición: {cert.date}</p>
+            {cert.credential && (
+              <a href={cert.credential} target="_blank" rel="noopener noreferrer" class="cert-link">
+                Ver credencial →
+              </a>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .certifications {
+    background: transparent;
+    position: relative;
+  }
+
+  .certifications h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .certifications h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    border-radius: 2px;
+  }
+
+  .certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .cert-card {
+    background: var(--color-bg-card);
+    border: 2px solid var(--color-border);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    display: flex;
+    gap: var(--spacing-md);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  .cert-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+  }
+
+  .cert-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: var(--shadow-hover), var(--shadow-green);
+    border-color: var(--color-border-green);
+    background-color: var(--color-bg-card-hover);
+  }
+
+  .cert-card:hover::before {
+    transform: scaleY(1);
+    box-shadow: 0 0 10px var(--color-primary);
+  }
+
+  .cert-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .cert-content {
+    flex: 1;
+  }
+
+  .cert-content h3 {
+    color: var(--color-text);
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.2rem;
+  }
+
+  .cert-issuer {
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.95rem;
+  }
+
+  .cert-date {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .cert-link {
+    color: var(--color-primary);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+
+  .cert-link:hover {
+    color: var(--color-primary-dark);
+    transform: translateX(5px);
+  }
+
+  @media (max-width: 768px) {
+    .certifications-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cert-card {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .cert-icon {
+      margin: 0 auto;
+    }
+  }
+</style>
+

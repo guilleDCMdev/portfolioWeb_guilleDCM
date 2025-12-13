@@ -1,0 +1,171 @@
+---
+// Cursor personalizado con efectos visuales
+---
+
+<div class="custom-cursor">
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+  <div class="cursor-particles"></div>
+</div>
+
+<script>
+  // Script para el cursor personalizado
+  if (typeof window !== 'undefined') {
+    const cursor = document.querySelector('.custom-cursor');
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorOutline = document.querySelector('.cursor-outline');
+    const cursorParticles = document.querySelector('.cursor-particles');
+    
+    let mouseX = 0;
+    let mouseY = 0;
+    let outlineX = 0;
+    let outlineY = 0;
+    
+    // Crear partículas
+    function createParticle(x, y) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = x + 'px';
+      particle.style.top = y + 'px';
+      cursorParticles.appendChild(particle);
+      
+      setTimeout(() => {
+        particle.remove();
+      }, 1000);
+    }
+    
+    // Seguir el mouse
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      
+      cursorDot.style.left = mouseX + 'px';
+      cursorDot.style.top = mouseY + 'px';
+      
+      // Crear partículas ocasionalmente
+      if (Math.random() > 0.7) {
+        createParticle(mouseX, mouseY);
+      }
+    });
+    
+    // Animación suave del outline
+    function animateOutline() {
+      outlineX += (mouseX - outlineX) * 0.1;
+      outlineY += (mouseY - outlineY) * 0.1;
+      
+      cursorOutline.style.left = outlineX + 'px';
+      cursorOutline.style.top = outlineY + 'px';
+      
+      requestAnimationFrame(animateOutline);
+    }
+    animateOutline();
+    
+    // Efectos en hover
+    const interactiveElements = document.querySelectorAll('a, button, .btn, .project-card, .experience-item, .skill-item, .cert-card');
+    
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursorDot.classList.add('hover');
+        cursorOutline.classList.add('hover');
+      });
+      
+      el.addEventListener('mouseleave', () => {
+        cursorDot.classList.remove('hover');
+        cursorOutline.classList.remove('hover');
+      });
+    });
+    
+    // Ocultar cursor nativo
+    document.body.style.cursor = 'none';
+  }
+</script>
+
+<style>
+  .custom-cursor {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+  }
+
+  .cursor-dot {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: #2d8659;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: transform 0.1s ease, background 0.3s ease;
+    box-shadow: 0 0 10px #2d8659, 0 0 20px #4a9d75;
+    z-index: 10000;
+  }
+
+  .cursor-dot.hover {
+    transform: translate(-50%, -50%) scale(1.5);
+    background: #4a9d75;
+    box-shadow: 0 0 20px #2d8659, 0 0 30px #4a9d75, 0 0 40px #5a9d6b;
+  }
+
+  .cursor-outline {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(45, 134, 89, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+    z-index: 9999;
+  }
+
+  .cursor-outline.hover {
+    width: 60px;
+    height: 60px;
+    border-color: rgba(45, 134, 89, 0.8);
+    border-width: 3px;
+    box-shadow: 0 0 20px rgba(45, 134, 89, 0.5);
+  }
+
+  .cursor-particles {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+  }
+
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #2d8659;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: particleFade 1s ease-out forwards;
+    box-shadow: 0 0 10px #2d8659;
+  }
+
+  @keyframes particleFade {
+    0% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0) translateY(-30px);
+    }
+  }
+
+  /* Ocultar cursor en móviles */
+  @media (max-width: 768px) {
+    .custom-cursor {
+      display: none;
+    }
+    
+    body {
+      cursor: auto !important;
+    }
+  }
+</style>
+
