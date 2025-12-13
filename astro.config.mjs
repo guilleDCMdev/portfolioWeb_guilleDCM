@@ -5,6 +5,7 @@ import react from '@astrojs/react';
 export default defineConfig({
   integrations: [react()],
   output: 'static',
-  site: 'https://tu-dominio.com'
+  site: 'https://tu-dominio.com',
+  base: '/portfolioWeb/',
 });
 
