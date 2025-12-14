@@ -54,24 +54,6 @@ export const cvData = {
         "Desarrollo de habilidades técnicas fundamentales"
       ]
     },
-    {
-      company: "ALBERTO GASTROBAR TORRES SL",
-      position: "Camarero",
-      location: "Logroño, La Rioja, España",
-      startDate: "Noviembre 2023",
-      endDate: "Febrero 2024",
-      description: "Trabajo en hostelería en jornada parcial.",
-      achievements: []
-    },
-    {
-      company: "PuntoySet",
-      position: "Entrenador de Tenis",
-      location: "Logroño, La Rioja, España",
-      startDate: "Junio 2023",
-      endDate: "Agosto 2023",
-      description: "Entrenamiento de tenis en jornada completa.",
-      achievements: []
-    }
   ],
   education: [
     {
@@ -119,6 +101,14 @@ export const cvData = {
       description: "MotoConnect es una aplicación móvil desarrollada en Flutter que tiene como objetivo unir a la comunidad motera a través de la organización de eventos, chats y rutas recomendadas según el tipo de moto de cada usuario.",
       technologies: ["Flutter", "Dart", "Firebase","JavaScript","Google Cloud","API Maps","JSON" ,"Node.js", "Express"],
       github: "https://github.com/MotoConnect-guilleDCM/TFG-Final-GuillermoDeCarlosMu-oz",
+      demo: "",
+      image: ""
+    },
+    {
+      name:"Pokemon Team Builder IA",
+      description: "Pokemon Team Builder IA es una aplicación desarrollada en Python que tiene como objetivo ayudar a los usuarios a crear equipos de Pokémon utilizando inteligencia artificial.",
+      technologies: ["Python", "AI","Pandas", "Scikit-learn"],
+      github: "https://github.com/guilleDCMdev/Pokemon-Team-Buil-IA",
       demo: "",
       image: ""
     },
