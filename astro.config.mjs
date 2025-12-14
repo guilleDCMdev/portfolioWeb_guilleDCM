@@ -1,10 +1,6 @@
-import { defineConfig } from 'astro/config';
-import react from '@astrojs/react';
+import { defineConfig } from 'astro/config'
 
-// https://astro.build/config
 export default defineConfig({
-  integrations: [react()],
-  output: 'static',             // correcto, genera archivos estáticos
-  site: 'https://guilledcmdev.github.io', // tu dominio de GitHub Pages
-  base: '/portfolioWeb/',       // el nombre de tu repo
-});
+  site: 'https://guilledcmdev.github.io',
+  base: 'portfolioWeb_guilleDCM',
+})
