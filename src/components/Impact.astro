@@ -1,0 +1,79 @@
+<section id="impact" class="impact">
+  <div class="container">
+    <h2>Impacto profesional</h2>
+    <p class="impact-intro">
+      Construyo soluciones enfocadas a negocio: backend fiable, cloud escalable, automatización y datos. También trabajo con entornos Linux y telefonía IP (Asterisk) cuando el producto lo requiere.
+    </p>
+    <div class="impact-grid">
+      <article class="impact-card">
+        <h3>Backend que escala</h3>
+        <p>Diseño APIs y servicios orientados a mantenibilidad, observabilidad y rendimiento en entornos reales.</p>
+      </article>
+      <article class="impact-card">
+        <h3>Cloud sobre AWS</h3>
+        <p>Implemento flujos cloud con servicios como Lambda y S3 para acelerar desarrollo y operación.</p>
+      </article>
+      <article class="impact-card">
+        <h3>Data + automatización</h3>
+        <p>Transformo procesos manuales en pipelines automatizados para ganar tiempo y reducir errores.</p>
+      </article>
+      <article class="impact-card">
+        <h3>IA aplicada</h3>
+        <p>Integro enfoques de IA/ML cuando aportan valor real: clasificación, análisis y optimización de procesos.</p>
+      </article>
+      <article class="impact-card">
+        <h3>Linux y telefonía IP</h3>
+        <p>
+          Experiencia con sistemas Linux en entornos de despliegue y operación, y con Asterisk para soluciones de voz y telefonía integradas con backend y servicios de contacto.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .impact h2 {
+    text-align: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .impact-intro {
+    text-align: center;
+    max-width: 70ch;
+    margin: 0 auto var(--spacing-md);
+    color: var(--color-text-light);
+    line-height: 1.75;
+  }
+
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--spacing-md);
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .impact-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    padding: 1.1rem;
+  }
+
+  .impact-card h3 {
+    margin-bottom: 0.45rem;
+    font-size: 1.05rem;
+  }
+
+  .impact-card p {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    font-size: 0.97rem;
+  }
+
+  @media (max-width: 768px) {
+    .impact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

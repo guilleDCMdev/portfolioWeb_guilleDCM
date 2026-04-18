@@ -113,10 +113,11 @@ export const cvData = {
       category: "Herramientas y Tecnologías",
       items: [
         "Git",
+        "Linux",
         "API de Postman",
         "Android Studio",
         "Desarrollo de API",
-        "Telefonía",
+        "Telefonía IP",
         "Asterisk",
       ],
     },

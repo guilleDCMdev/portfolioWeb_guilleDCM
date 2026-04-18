@@ -1,16 +1,95 @@
 ---
 import { cvData } from '../data/cv';
+
+const spanishMonths: Record<string, number> = {
+  enero: 0,
+  febrero: 1,
+  marzo: 2,
+  abril: 3,
+  mayo: 4,
+  junio: 5,
+  julio: 6,
+  agosto: 7,
+  septiembre: 8,
+  octubre: 9,
+  noviembre: 10,
+  diciembre: 11,
+};
+
+function parseStartDate(s: string): Date | null {
+  const m = s.trim().toLowerCase().match(/^(\w+)\s+(\d{4})$/);
+  if (!m) return null;
+  const month = spanishMonths[m[1]];
+  const year = Number(m[2]);
+  if (month === undefined || Number.isNaN(year)) return null;
+  return new Date(year, month, 1);
+}
+
+const experienceStarts = cvData.experience
+  .map((e) => parseStartDate(e.startDate))
+  .filter((d): d is Date => d !== null);
+
+const earliestDev = experienceStarts.length
+  ? new Date(Math.min(...experienceStarts.map((d) => d.getTime())))
+  : null;
+
+let devYearsValue = '—';
+let devYearsLabel = 'Experiencia laboral en desarrollo';
+
+if (earliestDev) {
+  const yearsFloat =
+    (Date.now() - earliestDev.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
+  const fullYears = Math.floor(yearsFloat);
+  if (fullYears < 1) {
+    devYearsValue = '1';
+    devYearsLabel = 'año en desarrollo de software';
+  } else {
+    devYearsValue = `${fullYears}+`;
+    devYearsLabel = 'años en desarrollo de software';
+  }
+}
+
+const languagesShort = cvData.languages
+  .map((l) =>
+    l.language === 'Español' ? 'ES' : l.language === 'Inglés' ? 'EN' : l.language,
+  )
+  .join(' · ');
 ---
 
 <section class="hero">
   <div class="container">
     <div class="hero-content">
+      <p class="hero-eyebrow">Actualmente en Inconcert</p>
       <h1 class="hero-title">{cvData.personal.name}</h1>
       <p class="hero-subtitle">{cvData.personal.title}</p>
+      <div class="hero-kpis">
+        <article class="kpi-card">
+          <span class="kpi-value">{devYearsValue}</span>
+          <span class="kpi-label">{devYearsLabel}</span>
+        </article>
+        <article class="kpi-card">
+          <span class="kpi-value">{cvData.projects.length}</span>
+          <span class="kpi-label">Proyectos en portfolio</span>
+        </article>
+        <article class="kpi-card">
+          <span class="kpi-value">{languagesShort}</span>
+          <span class="kpi-label">Idiomas de trabajo</span>
+        </article>
+      </div>
+      <div class="specialties">
+        <span>AWS Cloud</span>
+        <span>Backend APIs</span>
+        <span>Data Engineering</span>
+        <span>Linux</span>
+        <span>Telefonía IP (Asterisk)</span>
+        <span>Automatización</span>
+        <span>IA / ML</span>
+      </div>
       <div class="hero-links">
-        <a href="#contact" class="btn">Contactar</a>
-        <a href={cvData.personal.linkedin} target="_blank" rel="noopener noreferrer" class="btn">
-          LinkedIn
+        <a href="#projects" class="btn">Ver proyectos</a>
+        <a href="#contact" class="btn btn-secondary">Hablemos</a>
+        <a href={cvData.personal.linkedin} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+          LinkedIn Profile
         </a>
       </div>
       <div class="hero-social">
@@ -45,6 +124,19 @@ import { cvData } from '../data/cv';
     margin: 0 auto;
   }
 
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary-dark);
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-card);
+    border-radius: 999px;
+    padding: 0.35rem 0.75rem;
+    margin-bottom: 0.9rem;
+  }
+
   .hero-title {
     margin-bottom: var(--spacing-sm);
     color: var(--color-text);
@@ -60,11 +152,48 @@ import { cvData } from '../data/cv';
     line-height: 1.75;
   }
 
-  .hero-description {
+  .hero-kpis {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .kpi-card {
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-card);
+    border-radius: var(--border-radius-sm);
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .kpi-value {
     font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--color-text);
+  }
+
+  .kpi-label {
+    font-size: 0.78rem;
     color: var(--color-text-light);
-    margin-bottom: var(--spacing-lg);
-    line-height: 1.8;
+  }
+
+  .specialties {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .specialties span {
+    font-size: 0.78rem;
+    color: var(--color-text-light);
+    border: 1px solid var(--color-border);
+    padding: 0.32rem 0.7rem;
+    border-radius: 999px;
+    background: var(--color-bg-card);
   }
 
   .hero-links {
@@ -100,6 +229,14 @@ import { cvData } from '../data/cv';
   @media (max-width: 768px) {
     .hero {
       text-align: center;
+    }
+
+    .hero-kpis {
+      grid-template-columns: 1fr;
+    }
+
+    .specialties {
+      justify-content: center;
     }
 
     .hero-links,

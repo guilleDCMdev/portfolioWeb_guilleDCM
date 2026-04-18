@@ -1,5 +1,24 @@
 ---
 import { cvData } from '../data/cv';
+
+const projectFocus: Record<string, { challenge: string; solution: string }> = {
+  lifeos: {
+    challenge: 'Unificar finanzas personales, hábitos e IA en un único sistema escalable.',
+    solution: 'Arquitectura full-stack modular con backend API, almacenamiento relacional y automatizaciones.',
+  },
+  'Motorcycle Accident Risk Analysis & Severity Prediction': {
+    challenge: 'Analizar gran volumen de datos de tráfico y predecir severidad de accidentes.',
+    solution: 'Pipeline de análisis y modelos de ML para extraer patrones y mejorar la toma de decisiones.',
+  },
+  'sky-map': {
+    challenge: 'Mostrar vuelos en tiempo real con procesamiento continuo de datos.',
+    solution: 'Ingesta streaming con Kafka + visualización interactiva conectada a backend en tiempo real.',
+  },
+  'polymarket-bot': {
+    challenge: 'Automatizar decisiones sobre un mercado de predicción descentralizado.',
+    solution: 'Bot con integración API para ejecutar flujos automáticos y monitorizar oportunidades.',
+  },
+};
 ---
 
 <section id="projects" class="projects">
@@ -25,6 +44,14 @@ import { cvData } from '../data/cv';
               </div>
             </div>
             <p class="project-description">{project.description}</p>
+            <div class="project-block">
+              <h4>Problema</h4>
+              <p>{projectFocus[project.name]?.challenge || 'Resolver un caso real con enfoque backend, cloud y datos.'}</p>
+            </div>
+            <div class="project-block">
+              <h4>Solución</h4>
+              <p>{projectFocus[project.name]?.solution || 'Diseño e implementación de una solución técnica escalable y mantenible.'}</p>
+            </div>
             <div class="project-tech">
               {project.technologies.map((tech) => (
                 <span class="tech-tag">{tech}</span>
@@ -96,6 +123,27 @@ import { cvData } from '../data/cv';
     color: var(--color-text-light);
     line-height: 1.7;
     margin: var(--spacing-xs) 0;
+  }
+
+  .project-block {
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-alt);
+    border-radius: var(--border-radius-sm);
+    padding: 0.7rem 0.8rem;
+  }
+
+  .project-block h4 {
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-primary-dark);
+    margin-bottom: 0.35rem;
+  }
+
+  .project-block p {
+    font-size: 0.94rem;
+    color: var(--color-text-light);
+    line-height: 1.65;
   }
 
   .project-tech {
