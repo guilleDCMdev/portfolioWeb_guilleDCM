@@ -38,34 +38,6 @@ import { cvData } from '../data/cv';
   .hero {
     padding: var(--spacing-xl) 0;
     text-align: center;
-    background: transparent;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(45, 134, 89, 0.1) 0%, transparent 70%);
-    animation: pulse 6s ease-in-out infinite;
-    z-index: -1;
-  }
-
-  @keyframes pulse {
-    0%, 100% {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 0.3;
-    }
-    50% {
-      transform: translate(-50%, -50%) scale(1.2);
-      opacity: 0.6;
-    }
   }
 
   .hero-content {
@@ -75,22 +47,8 @@ import { cvData } from '../data/cv';
 
   .hero-title {
     margin-bottom: var(--spacing-sm);
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    position: relative;
-    animation: fadeInUp 0.8s ease-out, glowText 3s ease-in-out infinite;
-    filter: drop-shadow(0 0 10px rgba(45, 134, 89, 0.3));
-  }
-
-  @keyframes glowText {
-    0%, 100% {
-      filter: drop-shadow(0 0 10px rgba(45, 134, 89, 0.3));
-    }
-    50% {
-      filter: drop-shadow(0 0 20px rgba(45, 134, 89, 0.5));
-    }
+    color: var(--color-text);
+    animation: fadeInUp 0.8s ease-out;
   }
 
   .hero-subtitle {
@@ -134,7 +92,7 @@ import { cvData } from '../data/cv';
     background-color: var(--color-bg-card);
     border-color: var(--color-border-green);
     transform: translateY(-2px);
-    box-shadow: 0 0 15px rgba(45, 134, 89, 0.3);
+    box-shadow: var(--shadow);
   }
 </style>
 

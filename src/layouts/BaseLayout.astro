@@ -17,6 +17,14 @@ const { title, description = "Portfolio profesional" } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/public/guilledcm.ico" />
     <meta name="generator" content={Astro.generator} />
+    <script is:inline>
+      (() => {
+        const storedTheme = localStorage.getItem('theme');
+        const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        const theme = storedTheme || (prefersLight ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
     <title>{title}</title>
   </head>
   <body>
