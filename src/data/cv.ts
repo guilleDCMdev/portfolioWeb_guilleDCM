@@ -97,6 +97,14 @@ export const cvData = {
   ],
   projects: [
     {
+      name:"Motorcycle Accident Risk Analysis & Severity Prediction",
+      description: "Análisis geoespacial y predicción de severidad de accidentes de tráfico usando Machine Learning sobre 500.000 registros reales de EE.UU.",
+      technologies: ["Python", "Machine Learning", "Geospatial Analysis", "Data Visualization"],
+      github: "https://github.com/guilleDCMdev/motorcycle-accident-analysis",
+      demo: "",
+      image: ""
+    },
+    {
       name:"TFG MotoConnect",
       description: "MotoConnect es una aplicación móvil desarrollada en Flutter que tiene como objetivo unir a la comunidad motera a través de la organización de eventos, chats y rutas recomendadas según el tipo de moto de cada usuario.",
       technologies: ["Flutter", "Dart", "Firebase","JavaScript","Google Cloud","API Maps","JSON" ,"Node.js", "Express"],
