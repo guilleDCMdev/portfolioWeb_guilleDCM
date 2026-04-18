@@ -58,10 +58,10 @@ import { cvData } from '../data/cv';
   .header {
     position: sticky;
     top: 0;
-    background-color: color-mix(in srgb, var(--color-bg-alt) 88%, transparent);
+    background-color: color-mix(in srgb, var(--color-bg) 90%, transparent);
     border-bottom: 1px solid var(--color-border);
     z-index: 100;
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(10px);
     transition: background-color 0.25s ease, border-color 0.25s ease;
   }
 
@@ -74,11 +74,12 @@ import { cvData } from '../data/cv';
   }
 
   .nav-brand a {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 700;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.01em;
     color: var(--color-text);
     transition: color 0.2s ease;
+    text-transform: uppercase;
   }
 
   .nav-links {
@@ -90,7 +91,11 @@ import { cvData } from '../data/cv';
 
   .nav-links a {
     color: var(--color-text);
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 0.86rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
     transition: color 0.2s ease;
     position: relative;
     padding: 0.5rem 0;
@@ -102,7 +107,7 @@ import { cvData } from '../data/cv';
     bottom: 0;
     left: 0;
     width: 0;
-    height: 2px;
+    height: 1px;
     background: var(--color-primary);
     transition: width 0.2s ease;
   }
@@ -119,8 +124,8 @@ import { cvData } from '../data/cv';
     width: 2.4rem;
     height: 2.4rem;
     border-radius: 999px;
-    border: 1px solid var(--color-border-light);
-    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    background: transparent;
     color: var(--color-text);
     cursor: pointer;
     display: grid;
@@ -130,7 +135,7 @@ import { cvData } from '../data/cv';
 
   .theme-toggle:hover {
     border-color: var(--color-primary);
-    background: var(--color-bg-card-hover);
+    background: var(--color-bg-alt);
     transform: translateY(-1px);
   }
 
@@ -168,7 +173,7 @@ import { cvData } from '../data/cv';
       left: 0;
       right: 0;
       flex-direction: column;
-      background-color: color-mix(in srgb, var(--color-bg-alt) 92%, transparent);
+      background-color: color-mix(in srgb, var(--color-bg) 96%, transparent);
       border-bottom: 1px solid var(--color-border);
       padding: var(--spacing-md);
       gap: var(--spacing-sm);

@@ -39,58 +39,36 @@ import { cvData } from '../data/cv';
 
 <style>
   .projects {
-    background: transparent;
-    position: relative;
+    background: var(--color-bg-alt);
   }
 
   .projects h2 {
     text-align: center;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
   }
 
   .projects-list {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--spacing-md);
-    max-width: 1200px;
+    max-width: 1080px;
     margin: 0 auto;
   }
 
   .project-card {
     background-color: var(--color-bg-card);
-    border: 1px solid var(--color-border-light);
+    border: 1px solid var(--color-border);
     border-radius: var(--border-radius);
     padding: var(--spacing-md);
     box-shadow: var(--shadow);
-    transition: all 0.3s ease;
+    transition: border-color 0.2s ease, transform 0.2s ease;
     display: flex;
-    position: relative;
-    overflow: hidden;
     width: 100%;
   }
 
-  .project-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
-    transform: scaleY(0);
-    transition: transform 0.3s ease;
-  }
-
   .project-card:hover {
-    transform: translateX(5px);
-    box-shadow: var(--shadow-hover), var(--shadow-green);
-    border-color: var(--color-border-green);
-    background-color: var(--color-bg-card-hover);
-  }
-
-  .project-card:hover::before {
-    transform: scaleY(1);
-    box-shadow: 0 0 15px var(--color-primary);
+    transform: translateY(-2px);
+    border-color: var(--color-primary-light);
   }
 
   .project-content {
@@ -129,20 +107,18 @@ import { cvData } from '../data/cv';
 
   .tech-tag {
     background-color: var(--color-bg-alt);
-    color: var(--color-primary);
+    color: var(--color-text-light);
     padding: 0.35rem 0.85rem;
     border-radius: 1rem;
     font-size: 0.85rem;
     font-weight: 500;
-    border: 1px solid var(--color-border-light);
-    transition: all 0.3s ease;
+    border: 1px solid var(--color-border);
+    transition: border-color 0.2s ease, color 0.2s ease;
   }
 
   .tech-tag:hover {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow);
+    color: var(--color-primary);
+    border-color: var(--color-primary-light);
   }
 
   .project-links {
@@ -164,6 +140,10 @@ import { cvData } from '../data/cv';
   }
 
   @media (max-width: 768px) {
+    .projects-list {
+      grid-template-columns: 1fr;
+    }
+
     .project-header {
       flex-direction: column;
       align-items: flex-start;

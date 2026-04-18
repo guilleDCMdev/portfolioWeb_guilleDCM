@@ -7,49 +7,68 @@
 }
 
 :root {
-  --color-primary: #2f7a58;
-  --color-primary-dark: #22563d;
-  --color-primary-light: #4f9f7c;
-  --color-text: #e9eeec;
-  --color-text-light: #b3beb9;
-  --color-text-muted: #8f9a95;
-  --color-bg: #0b0f0d;
-  --color-bg-alt: #121714;
-  --color-bg-card: #171d19;
-  --color-bg-card-hover: #1d2520;
-  --color-border: #2a332e;
-  --color-border-light: #36413b;
-  --color-border-green: rgba(79, 159, 124, 0.3);
-  --max-width: 1120px;
+  --color-primary: #7a8fa8;
+  --color-primary-dark: #657b95;
+  --color-primary-light: #96a9bf;
+  --color-text: #243240;
+  --color-text-light: #5d6f7f;
+  --color-text-muted: #8191a0;
+  --color-bg: #f7f9fc;
+  --color-bg-alt: #f2f5f9;
+  --color-bg-card: #ffffff;
+  --color-bg-card-hover: #f9fbfd;
+  --color-border: #e3e9f0;
+  --color-border-light: #d4dde7;
+  --color-border-green: rgba(122, 143, 168, 0.28);
+  --max-width: 1040px;
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 2rem;
   --spacing-lg: 3rem;
-  --spacing-xl: 4rem;
-  --border-radius: 0.75rem;
-  --border-radius-sm: 0.5rem;
-  --shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
-  --shadow-lg: 0 14px 35px rgba(0, 0, 0, 0.25);
-  --shadow-hover: 0 12px 30px rgba(47, 122, 88, 0.2);
+  --spacing-xl: 4.8rem;
+  --border-radius: 1rem;
+  --border-radius-sm: 0.7rem;
+  --shadow: 0 8px 22px rgba(26, 50, 73, 0.06);
+  --shadow-lg: 0 14px 30px rgba(26, 50, 73, 0.08);
+  --shadow-hover: 0 10px 24px rgba(73, 99, 128, 0.12);
 }
 
 [data-theme='light'] {
-  --color-primary: #23674a;
-  --color-primary-dark: #194c36;
-  --color-primary-light: #3d8f6a;
-  --color-text: #17211c;
-  --color-text-light: #44534b;
-  --color-text-muted: #5b6a62;
-  --color-bg: #f5f8f6;
-  --color-bg-alt: #edf2ee;
+  --color-primary: #7a8fa8;
+  --color-primary-dark: #657b95;
+  --color-primary-light: #96a9bf;
+  --color-text: #243240;
+  --color-text-light: #5d6f7f;
+  --color-text-muted: #8191a0;
+  --color-bg: #f7f9fc;
+  --color-bg-alt: #f2f5f9;
   --color-bg-card: #ffffff;
-  --color-bg-card-hover: #f3f7f4;
-  --color-border: #d7e1db;
-  --color-border-light: #c6d3cb;
-  --color-border-green: rgba(35, 103, 74, 0.2);
-  --shadow: 0 6px 20px rgba(19, 42, 30, 0.08);
-  --shadow-lg: 0 14px 28px rgba(19, 42, 30, 0.12);
-  --shadow-hover: 0 10px 24px rgba(35, 103, 74, 0.18);
+  --color-bg-card-hover: #f9fbfd;
+  --color-border: #e3e9f0;
+  --color-border-light: #d4dde7;
+  --color-border-green: rgba(122, 143, 168, 0.28);
+  --shadow: 0 8px 22px rgba(26, 50, 73, 0.06);
+  --shadow-lg: 0 14px 30px rgba(26, 50, 73, 0.08);
+  --shadow-hover: 0 10px 24px rgba(73, 99, 128, 0.12);
+}
+
+[data-theme='dark'] {
+  --color-primary: #a8bbd0;
+  --color-primary-dark: #91a6bc;
+  --color-primary-light: #bfd0e1;
+  --color-text: #e7edf4;
+  --color-text-light: #b7c2ce;
+  --color-text-muted: #93a2b1;
+  --color-bg: #11161c;
+  --color-bg-alt: #161d24;
+  --color-bg-card: #1b242d;
+  --color-bg-card-hover: #222d37;
+  --color-border: #2c3946;
+  --color-border-light: #3a4958;
+  --color-border-green: rgba(168, 187, 208, 0.28);
+  --shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.32);
+  --shadow-hover: 0 12px 26px rgba(14, 22, 31, 0.38);
 }
 
 html {
@@ -71,6 +90,7 @@ section {
   animation: fadeInUp 0.6s ease-out;
   animation-fill-mode: both;
   padding: var(--spacing-xl) 0;
+  border-top: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
 }
 
 section:nth-child(1) { animation-delay: 0.05s; }
@@ -96,11 +116,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 3.3rem;
+  font-weight: 800;
 }
 
 h2 {
-  font-size: 2.3rem;
+  font-size: 2.15rem;
+  font-weight: 700;
 }
 
 h3 {
@@ -119,29 +141,29 @@ a:hover {
 
 .btn {
   display: inline-block;
-  padding: 0.75rem 1.35rem;
+  padding: 0.8rem 1.45rem;
   background: var(--color-primary);
-  color: #f7fbf9;
-  border-radius: var(--border-radius);
+  color: #ffffff;
+  border-radius: 999px;
   font-weight: 600;
   border: 1px solid transparent;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-  box-shadow: var(--shadow);
+  box-shadow: none;
 }
 
 .btn:hover {
   background: var(--color-primary-dark);
   color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
+  transform: translateY(-1px);
 }
 
 .btn-secondary {
   background-color: transparent;
-  border: 1px solid var(--color-border-light);
+  border: 1px solid var(--color-border);
   color: var(--color-text);
   box-shadow: none;
+  border-radius: 999px;
 }
 
 .btn-secondary:hover {

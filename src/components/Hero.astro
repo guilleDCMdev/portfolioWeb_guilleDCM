@@ -36,12 +36,12 @@ import { cvData } from '../data/cv';
 
 <style>
   .hero {
-    padding: var(--spacing-xl) 0;
-    text-align: center;
+    padding: calc(var(--spacing-xl) + 1rem) 0 var(--spacing-xl);
+    text-align: left;
   }
 
   .hero-content {
-    max-width: 800px;
+    max-width: 760px;
     margin: 0 auto;
   }
 
@@ -49,12 +49,15 @@ import { cvData } from '../data/cv';
     margin-bottom: var(--spacing-sm);
     color: var(--color-text);
     animation: fadeInUp 0.8s ease-out;
+    text-wrap: balance;
   }
 
   .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.22rem;
     color: var(--color-text-light);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 2.2rem;
+    max-width: 62ch;
+    line-height: 1.75;
   }
 
   .hero-description {
@@ -67,7 +70,7 @@ import { cvData } from '../data/cv';
   .hero-links {
     display: flex;
     gap: var(--spacing-sm);
-    justify-content: center;
+    justify-content: flex-start;
     margin-bottom: var(--spacing-lg);
     flex-wrap: wrap;
   }
@@ -75,24 +78,34 @@ import { cvData } from '../data/cv';
   .hero-social {
     display: flex;
     gap: var(--spacing-md);
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
   }
 
   .hero-social a {
     color: var(--color-text-light);
-    transition: all 0.3s ease;
-    padding: 0.5rem 1rem;
-    border-radius: var(--border-radius-sm);
+    transition: color 0.2s ease, border-color 0.2s ease;
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
     border: 1px solid transparent;
+    font-size: 0.92rem;
   }
 
   .hero-social a:hover {
     color: var(--color-primary);
-    background-color: var(--color-bg-card);
-    border-color: var(--color-border-green);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow);
+    border-color: var(--color-border);
+    background-color: var(--color-bg-alt);
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      text-align: center;
+    }
+
+    .hero-links,
+    .hero-social {
+      justify-content: center;
+    }
   }
 </style>
 

@@ -40,10 +40,18 @@ import { cvData } from '../data/cv';
   </footer>
 
   <style>
+    main {
+      padding-bottom: var(--spacing-xl);
+    }
+
+    main section:first-child {
+      border-top: none;
+    }
+
     .footer {
       text-align: center;
-      padding: var(--spacing-lg);
-      background-color: var(--color-bg-alt);
+      padding: var(--spacing-xl) 0;
+      background-color: transparent;
       border-top: 1px solid var(--color-border);
       color: var(--color-text-light);
       position: relative;
@@ -60,16 +68,16 @@ import { cvData } from '../data/cv';
 
     .footer-links a {
       color: var(--color-text-light);
-      transition: all 0.3s ease;
-      padding: 0.5rem 1rem;
-      border-radius: var(--border-radius-sm);
+      transition: color 0.2s ease, border-color 0.2s ease;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
     }
 
     .footer-links a:hover {
       color: var(--color-primary);
-      background-color: var(--color-bg-card);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
+      border-color: var(--color-border);
+      background-color: var(--color-bg-alt);
     }
   </style>
 </BaseLayout>

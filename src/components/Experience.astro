@@ -1,9 +1,23 @@
 ---
 import { cvData } from '../data/cv';
 
+interface Role {
+  position: string;
+  startDate: string;
+  endDate: string;
+  description: string;
+  achievements?: string[];
+}
+
+interface GroupedExperienceItem {
+  company: string;
+  location: string;
+  roles: Role[];
+}
+
 // Agrupar experiencias de WUNDER
-const groupedExperience = cvData.experience.reduce((acc, exp) => {
-  const existing = acc.find(item => item.company === exp.company && item.company === 'WUNDER');
+const groupedExperience = cvData.experience.reduce<GroupedExperienceItem[]>((acc, exp) => {
+  const existing = acc.find((item) => item.company === exp.company && item.company === 'WUNDER');
   if (existing) {
     existing.roles.push({
       position: exp.position,
@@ -40,7 +54,7 @@ const groupedExperience = cvData.experience.reduce((acc, exp) => {
             <span class="location">{exp.location}</span>
           </div>
           
-          {exp.roles.map((role, index) => (
+          {exp.roles.map((role: Role, index: number) => (
             <div class={`role-container ${index === 0 ? 'first-role' : ''}`}>
               <div class="role-header">
                 <h4 class="position">{role.position}</h4>
@@ -49,7 +63,7 @@ const groupedExperience = cvData.experience.reduce((acc, exp) => {
               <p class="experience-description">{role.description}</p>
               {role.achievements && role.achievements.length > 0 && (
                 <ul class="achievements">
-                  {role.achievements.map((achievement) => (
+                  {role.achievements.map((achievement: string) => (
                     <li>{achievement}</li>
                   ))}
                 </ul>
@@ -65,14 +79,14 @@ const groupedExperience = cvData.experience.reduce((acc, exp) => {
 <style>
   .experience h2 {
     text-align: center;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
   }
 
   .experience-list {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-lg);
-    max-width: 900px;
+    max-width: 980px;
     margin: 0 auto;
   }
 
@@ -80,35 +94,14 @@ const groupedExperience = cvData.experience.reduce((acc, exp) => {
     background-color: var(--color-bg-card);
     padding: var(--spacing-md);
     border-radius: var(--border-radius);
-    border: 1px solid var(--color-border-light);
+    border: 1px solid var(--color-border);
     box-shadow: var(--shadow);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .experience-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
-    transform: scaleY(0);
-    transition: transform 0.3s ease;
+    transition: border-color 0.2s ease, transform 0.2s ease;
   }
 
   .experience-item:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: var(--shadow-hover), var(--shadow-green);
-    border-color: var(--color-border-green);
-    background-color: var(--color-bg-card-hover);
-  }
-
-  .experience-item:hover::before {
-    transform: scaleY(1);
-    box-shadow: 0 0 10px var(--color-primary);
+    transform: translateY(-2px);
+    border-color: var(--color-primary-light);
   }
 
   .company-header {
@@ -117,7 +110,7 @@ const groupedExperience = cvData.experience.reduce((acc, exp) => {
     align-items: center;
     margin-bottom: var(--spacing-md);
     padding-bottom: var(--spacing-sm);
-    border-bottom: 2px solid var(--color-border-light);
+    border-bottom: 1px solid var(--color-border);
   }
 
   .company {
