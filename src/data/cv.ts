@@ -163,6 +163,15 @@ export const cvData = {
       image: "",
     },
     {
+      name: "polymarket-bot",
+      description:
+        "Bot para Polymarket, un mercado de predicciones descentralizado.",
+      technologies: ["Python", "Polymarket", "API"],
+      github: "https://github.com/guilleDCMdev/polymarket-bot",
+      demo: "",
+      image: "",
+    },
+    {
       name: "TFG MotoConnect",
       description:
         "MotoConnect es una aplicación móvil desarrollada en Flutter que tiene como objetivo unir a la comunidad motera a través de la organización de eventos, chats y rutas recomendadas según el tipo de moto de cada usuario.",
