@@ -2,7 +2,7 @@
 export const cvData = {
   personal: {
     name: "Guillermo de Carlos Muñoz",
-    title: "Backend Dev | Especializado en Big Data e IA💻🚀",
+    title: "Backend & Cloud Engineer | AWS, Data, Automatización e IA",
     email: "decarlosguille@gmail.com", // Actualiza con tu email
     phone: "+34 608 25 92 65",
     location: "Madrid, Comunidad de Madrid, España",
@@ -11,7 +11,7 @@ export const cvData = {
     github: "https://github.com/guilleDCMdev",
     website: "https://tu-website.com",
     summary:
-      "Hola, soy Guillermo de Carlos Muñoz, un friki de la tecnología y los ordenadores desde pequeño. Actualmente, formo parte de Inconcert, donde desarrollo mis habilidades y me paso el día programando en proyectos chulos. Además, acabo de terminar un Curso de Especialización en Inteligencia Artificial y Big Data, lo que me permite profundizar en áreas como aprendizaje automático, analítica de datos y toma de decisiones basadas en datos. Escribo código Backend en JavaScript/TypeScript, PHP, Python y Java, y también me defiendo en Frontend con frameworks como React. En mi tiempo libre, desarrollo aplicaciones en Flutter. Además, cuento con experiencia en servicios Cloud de AWS orientados a Big Data, como S3, Lambda... lo que me permite diseñar e implementar soluciones escalables y eficientes para el tratamiento de grandes volúmenes de datos. ¡Siempre dispuesto a aprender y colaborar!",
+      "Soy desarrollador Backend con enfoque en arquitectura Cloud sobre AWS, ingeniería de datos y automatización de procesos. Diseño e implemento APIs y servicios escalables con JavaScript/TypeScript, Python y Java, integrando soluciones orientadas a rendimiento, mantenibilidad y observabilidad. Me especializo en construir pipelines y flujos de datos apoyados en servicios como AWS Lambda y S3, y en aplicar IA/ML para extraer valor de la información y optimizar procesos de negocio. Mi objetivo es combinar backend robusto, cloud y datos para entregar productos fiables, eficientes y listos para crecer.",
   },
   experience: [
     {
